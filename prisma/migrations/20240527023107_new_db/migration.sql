@@ -8,7 +8,8 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Volunteer" (
     "email" TEXT NOT NULL PRIMARY KEY,
-    "name" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
     "phoneNumber" TEXT
 );
 

@@ -29,14 +29,14 @@ export const encryptPassword = (password: string) =>
   bcrypt.hash(password, saltRounds);
 
 export const createUnsecuredInformation = (user: User) => ({
-  email: user.email,
+  username: user.username,
 });
 
 export const generateToken = (user: User) =>
   jwt.sign(createUnsecuredInformation(user), getJwtSecret());
 
 const jwtInfoSchema = z.object({
-  email: z.string(),
+  username: z.string(),
   iat: z.number(),
 });
 
@@ -64,7 +64,7 @@ export const authMiddleware = async (
 
   const userFromJwt = await prisma.user.findFirst({
     where: {
-      email: myJwtData.email,
+      username: myJwtData.username,
     },
   });
   if (!userFromJwt) {
